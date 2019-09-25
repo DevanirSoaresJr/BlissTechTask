@@ -1,7 +1,6 @@
 "# BlissTechTask" 
+
 Updates will be typed here in the ReadMe for visibility purposes: 
-
-
 
 //25-09-2019 01:30AM
 FREQ-01: Loading Screen - 100%
