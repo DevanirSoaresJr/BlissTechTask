@@ -24,9 +24,9 @@ class QuestionsAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: QuestionsViewHolder, position: Int) {
-        holder.bind(questionList[position])
-        holder.itemView.setOnClickListener { listener.onItemClicked(position) }
+    override fun onBindViewHolder(questionsViewHolder: QuestionsViewHolder, position: Int) {
+        questionsViewHolder.bind(questionList[position])
+        questionsViewHolder.itemView.setOnClickListener { listener.onItemClicked(position) }
     }
 
     override fun getItemCount(): Int {
@@ -35,8 +35,8 @@ class QuestionsAdapter(
 }
 
 class QuestionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val tvId: TextView = itemView.findViewById(R.id.tvId)
-    private val tvQuestion: TextView = itemView.findViewById(R.id.tvQuestion)
+    private val tvId: TextView = itemView.findViewById(R.id.tvChoices)
+    private val tvQuestion: TextView = itemView.findViewById(R.id.tvVote)
     private val tvPublishedAt: TextView = itemView.findViewById(R.id.tvPublishedAt)
 
     fun bind(question: QuestionsResponse) {

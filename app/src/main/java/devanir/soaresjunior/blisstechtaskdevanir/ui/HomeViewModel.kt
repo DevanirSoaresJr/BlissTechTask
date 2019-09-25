@@ -2,6 +2,7 @@ package devanir.soaresjunior.blisstechtaskdevanir.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import devanir.soaresjunior.blisstechtaskdevanir.data.Choice
 import devanir.soaresjunior.blisstechtaskdevanir.data.QuestionsResponse
 import devanir.soaresjunior.blisstechtaskdevanir.data.StatusResponse
 import devanir.soaresjunior.blisstechtaskdevanir.repo.Repository
@@ -14,6 +15,8 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun showQuestionsInfo(): LiveData<List<QuestionsResponse>> = repository.getQuestions()
+
+    fun showChoicesInfo():LiveData<List<Choice>> = repository.getChoices()
 
     fun fetchNetWorkStatus(): LiveData<StatusResponse> = repository.getNetStatus()
 }
