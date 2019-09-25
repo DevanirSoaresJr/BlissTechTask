@@ -1,4 +1,5 @@
 "# BlissTechTask" 
+
 FREQ-01: Loading Screen - 100%
 
 FREQ-02: List Screen - 70% - search functionality missing
