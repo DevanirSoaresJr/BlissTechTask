@@ -16,7 +16,5 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
 
     fun showQuestionsInfo(): LiveData<List<QuestionsResponse>> = repository.getQuestions()
 
-    fun showChoicesInfo():LiveData<List<Choice>> = repository.getChoices()
-
     fun fetchNetWorkStatus(): LiveData<StatusResponse> = repository.getNetStatus()
 }

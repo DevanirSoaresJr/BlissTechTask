@@ -50,9 +50,9 @@ class QuestionsFragment : Fragment(), OnItemClickedListener {
     }
 
     override fun onItemClicked(position: Int) {
-        ChoicesFragment.newInstance(questions[position].choices)
+        val choiceFragment = ChoicesFragment.newInstance(questions[position].choices)
         fragmentManager?.beginTransaction()
-            ?.replace(R.id.flContainer, ChoicesFragment(), ChoicesFragment().tag)
+            ?.replace(R.id.flContainer, choiceFragment, ChoicesFragment().tag)
             ?.addToBackStack(ChoicesFragment().tag)
             ?.commit()
     }

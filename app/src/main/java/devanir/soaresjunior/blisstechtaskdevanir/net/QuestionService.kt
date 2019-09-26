@@ -6,8 +6,10 @@ import devanir.soaresjunior.blisstechtaskdevanir.QUESTIONS_ENDPOINT
 import devanir.soaresjunior.blisstechtaskdevanir.data.Choice
 import devanir.soaresjunior.blisstechtaskdevanir.data.QuestionsResponse
 import devanir.soaresjunior.blisstechtaskdevanir.data.StatusResponse
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface QuestionService {
@@ -21,5 +23,7 @@ interface QuestionService {
     @GET(NET_STATUS_ENDPOINT)
     fun getNetStatus(): Single<StatusResponse>
 
+    @PUT("")
+    fun updateVotes(): Observable<QuestionsResponse>
 
 }

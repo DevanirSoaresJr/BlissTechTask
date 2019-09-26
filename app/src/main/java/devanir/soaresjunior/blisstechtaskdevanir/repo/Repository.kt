@@ -11,7 +11,5 @@ interface Repository {
 
     fun getNetStatus(): LiveData<StatusResponse>
 
-    fun getChoices(): LiveData<List<Choice>>
-
     fun dispose()
 }

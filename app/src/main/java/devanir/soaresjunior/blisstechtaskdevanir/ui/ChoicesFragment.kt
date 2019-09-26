@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 
 import devanir.soaresjunior.blisstechtaskdevanir.R
@@ -38,36 +39,21 @@ class ChoicesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_choices, container, false)
     }
 
-    private fun onChoicesSet(choices: Choice?) {
-        choices?.let {
-            tvChoices.text = it.choice
-            tvVote.text = it.votes.toString()
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeChoices()
-        val choice = arguments?.getParcelable<Choice>("choices")
-        onChoicesSet(choice)
-    }
-
-    private fun observeChoices() {
-        viewModel.showChoicesInfo().observe(viewLifecycleOwner, Observer{
-            adapter = ChoicesAdapter(it)
+        arguments?.let {
+            choices = it.getParcelableArrayList("choices")!!
+            adapter = ChoicesAdapter(choices)
             rvChoices.adapter = adapter
-            choices = it
-        })
+        }
     }
 
     companion object {
-        fun newInstance(choices: List<Choice>): ChoicesFragment {
-            val fragment = ChoicesFragment()
-            val arguments = Bundle().apply {
-                putParcelableArrayList("choices", choices as ArrayList<out Parcelable>)
+        fun newInstance(choices: List<Choice>) = ChoicesFragment().apply {
+            arguments = Bundle().apply {
+                putParcelableArrayList("choices", choices as ArrayList<Choice>)
             }
-            fragment.arguments = arguments
-            return fragment
         }
     }
 }

@@ -16,7 +16,6 @@ class RepositoryImpl(private val questionService: QuestionService) : Repository 
     private val compositeDisposable = CompositeDisposable()
     private val questionsLiveData = MutableLiveData<List<QuestionsResponse>>()
     private val netStatusLiveData = MutableLiveData<StatusResponse>()
-    private val choiceLiveData = MutableLiveData<List<Choice>>()
 
 
     override fun getQuestions(): LiveData<List<QuestionsResponse>> {
@@ -50,21 +49,6 @@ class RepositoryImpl(private val questionService: QuestionService) : Repository 
             )
         )
         return netStatusLiveData
-    }
-
-    override fun getChoices(): LiveData<List<Choice>> {
-        compositeDisposable.add(questionService.getChoices()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io()).subscribe(
-                {
-                    choiceLiveData.value = it
-                },
-                {
-                    error("Showing Choices Went Wrong")
-                }
-            )
-        )
-        return choiceLiveData
     }
 
 
