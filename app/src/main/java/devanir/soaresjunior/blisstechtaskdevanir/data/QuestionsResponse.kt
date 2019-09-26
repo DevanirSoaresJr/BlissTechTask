@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 data class StatusResponse(
 
     var status: String? = null
+
 )
 
 @Parcelize
